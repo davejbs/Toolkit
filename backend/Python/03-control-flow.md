@@ -203,3 +203,4 @@ else:
 
 
 ```
+> Note : cet exemple est en anglais afin de rester fidèle au code original du cours.

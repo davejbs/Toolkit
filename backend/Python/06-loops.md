@@ -45,13 +45,13 @@ Pour ce faire, l'ordinateur va exécuter le bloc de code une fois pour chaque no
 
 ```py
 # Dans le cas d'un nombre :
-for number in range(10): # Pour chaque nombre à l'intérieur du nombre 10
-    print(number) # Affiche chacun de ces nombres 
+for nombre in range(10): # Pour chaque nombre à l'intérieur du nombre 10
+    print(nombre) # Affiche chacun de ces nombres 
 
 # Ou :
 nbr = 20
-for number in range(nbr): # Pour chaque nombre à l'intérieur du nombre 20
-    print(number) # Affiche chacun de ces nombres
+for nombre in range(nbr): # Pour chaque nombre à l'intérieur du nombre 20
+    print(nombre) # Affiche chacun de ces nombres
 ```
 
 - Cas d'utilisation #2, utiliser ce type de boucle en passant deux paramètres pour créer un intervalle (start, stop) :
@@ -59,21 +59,21 @@ for number in range(nbr): # Pour chaque nombre à l'intérieur du nombre 20
 > Il faut savoir que l'intervalle fonctionne en excluant le nombre passé en paramètre comme arrivée. Par exemple pour boucler 100 fois, il faut mettre : `range(1, 101)` et non `range(1, 100)`
 
 ```py
-for number in range(1, 11): # Pour chaque nombre inclus entre 1 et 10 
-    print(number) # Affiche chacun de ces nombres
+for nombre in range(1, 11): # Pour chaque nombre inclus entre 1 et 10 
+    print(nombre) # Affiche chacun de ces nombres
 ```
 
 - Cas d'utilisation #3 : utiliser ce type de boucle en passant en plus les bonds.
 
 ```py
-for number in range(1, 101, 10): # Pour chaque nombre inclus entre 1 et 100, et par bonds de 10
-    print(number) # Affiche chacun de ces nombres
+for nombre in range(1, 101, 10): # Pour chaque nombre inclus entre 1 et 100, et par bonds de 10
+    print(nombre) # Affiche chacun de ces nombres
 ```
 En passant les bonds, il devient également possible d'opter pour une décrémentation plutôt qu'une incrémentation :
 
 ```py
-for number in range(100, 0, -10): # Pour chaque nombre inclus entre 100 et 1, décrémenter par bonds de 10
-    print(number) # Affiche chacun de ces nombres
+for nombre in range(100, 0, -10): # Pour chaque nombre inclus entre 100 et 1, décrémenter par bonds de 10
+    print(nombre) # Affiche chacun de ces nombres
 ```
 
 ## 3-La boucle `while`
