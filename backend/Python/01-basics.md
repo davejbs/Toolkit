@@ -63,7 +63,7 @@ Permet à un utilisateur de saisir une donnée, puis de la stocker
 - Si le type d'input n'est pas précisé, peu importe ce que l'utilisateur saisit, ce sera automatiquement de type chaîne de caractères 
 
 ```py
-variable = input("A prompt for the user") # Ce que saisiera l'utilisateur sera enregistrée dans la variable
+variable = input("Une invite pour l'utilisateur") # Ce que saisiera l'utilisateur sera enregistrée dans la variable
 # C'est aussi possible de l'utiliser dans le vide mais si ce que l'utilisateur a saisi n'est enregistrée nulle part, cela ne sert à rien.
 ```
 
@@ -90,12 +90,16 @@ print("Hello World") # Affiche dans la console : Hello World
 age = 21
 print("L'utilisateur a :" + str(age) + " ans.") # Pour rappel : on convertit le contenu de la variable "age" en chaîne de caractères pour permettre la concaténation, sinon ça ne marchera pas.
 ```
-- Cas d'utilisation #3 : Concaténation automatique en mettant "f" avant les guillemets et en utilisant {}
+- Cas d'utilisation #3 : Concaténation automatique en mettant "f" avant les guillemets et en utilisant {} (f-string)
 
 ```py
 age = 21
 print(f"L'utilisateur a : {age} ans.") # Python fait automatiquement les conversions de types, ça affichera dans le terminal : L'utilisateur a 21 ans.
+
+# Il est aussi possible d'y concaténer des résultats :
+print(F"Dans 5 ans, l'utilisateur aura : {age + 5} ans")
 ```
+> À noter qu'on peut utiliser des f-string en écrivant f"" comme en écrivant F"" 
 - Cas d'utilisation #4 : En intégrant des sauts de lignes avec `\n`
 
 ```py
@@ -126,11 +130,11 @@ print(type(age)) # Affichera : <class 'int'>
 
 - Cas d'utilisation #7 : Combiner avec un input(): 
 ```py
-print("Hello " + input("What is your name ? :"))
+print("Hello " + input("Quel est votre nom ? :"))
 # Si l'utilisateur saisit Dave, alors la console affichera : Hello Dave
 # Même si cette approche est faisable, elle n'est pas recommandée en raison de la lourdeur de sa lisibilité
 ```
-- Cas d'utilisation #8 : Afficher un message de plusieurs lignes (Un code ASCII par exemple):
+- Cas d'utilisation #8 : Afficher un message de plusieurs lignes (Un code en braille par exemple):
 ```py
 print('''
 ⠀⠀⠀⠀⠀⢸⠓⢄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -151,5 +155,33 @@ print('''
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠹⣄⣀⡤⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ''') # Les triples guillemets permettent d'écrire du texte sur plusieurs lignes sans avoir besoin de \n
 # Source : https://emojicombos.com/pokemon-ascii-art
+```
+- Cas d'utilisation #9 : Afficher du texte contenant des symboles particuliers : 
+```py
+print(r'''
+Ce que ça fait de débugger du code :
+
+  1- ＿〆(˘ᗜ˘)  - C'est parti pour une nouvelle session de code
+
+  2- ＿φ(◦'⌣'◦) - Voyons voir, si j'écris ça et ça, ça devrait fonctionner
+
+  3-_〆(･_･｡) - Oh, ça ne fonctionne pas, où est le bug (**commence à chercher** et le temps commence à passer**)
+
+  4- ＿〆(。。)  **Cherche plus fort et encore plus de temps passe**
+
+  5- ｡｡｡o(ﾟ^ ﾟ)Hmm... - Je ne comprends pas pourquoi ça ne fonctionne pas... Bon, allons voir sur Stack Overflow
+
+  6- ＿φ(°-°=) - **Compare les codes** - Mais j'ai fait ça, pourquoi ça ne marche pas ? Attends...
+
+  7- φ(｡_｡ *)  **Trouve le bug** - Oh, j'ai trouvé l'erreur ! La voilà !
+
+  8- (ﾉ*'‐')ﾉ ﾐ ┸┸ - Oh wow, tout ça à cause d'une indentation mal placée
+
+  9- (∩⌣̀_⌣́) - Argh, j'ai maintenant mal à la tête. Faut vraiment que j'arrête de coder dans notepad++. J'ai besoin d'une pause.
+''')
+# Source : https://emoticonhub.com/#google_vignette 
+# Le "r" avant les triples guillemets crée une "raw string" : Python
+# traite le \ littéralement plutôt que comme le début d'une séquence
+# d'échappement (comme \n ou \t), ce qui évite les avertissements/erreurs.
 ```
 
