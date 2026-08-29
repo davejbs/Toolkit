@@ -2,10 +2,9 @@ import random
 import stage
 import word_list
 
+print(stage.logo)
 # L'ordi choisi un mot aléatoirement à partir d'une liste
-
 mot_choisi = random.choice(word_list.liste_mot)
-
 
 # L'indicatif s'affiche pour donner le nombre de lettre dans le mot
 indicatif = "_" * len(mot_choisi)
@@ -51,7 +50,9 @@ while partie_terminée != True:
     # Conséquence si la tentative ne correspond pas à une lettre du mot : 
     if tentative not in mot_choisi:
         lives -= 1
+        print(f"La lettre {tentative} ne fait pas partie du mot. Vous perdez une vie")
         avancée_pendue -= 1
+        print(f"Il vous reste : {lives} vies.")
 
     print(stage.stages[avancée_pendue])
     print(f"Lettres déjà essayées : {' - '.join(lettres_essayées)}")
@@ -63,5 +64,5 @@ while partie_terminée != True:
 
     if lives == 0:
         partie_terminée = True
-        print(f"Bahahaha t'as perdu 🫵 😂. Le mot était : {mot_choisi}")
+        print(f"Dommage, vous avez perdu... Le mot était : {mot_choisi}")
 
