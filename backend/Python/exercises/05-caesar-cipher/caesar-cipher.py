@@ -1,51 +1,42 @@
 import caesar_art
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+from caesar_caractères import alphabet
 
-#def encrypt(original_text, shift_amount):
-#    shift_amount = int(shift_amount)
-#    encrypted_text = ""
-#    for letter in original_text:
-#        index = alphabet.index(letter)
-#        shifted = index + shift_amount
-#        encrypted_text += alphabet[shifted % len(alphabet)] # Pour vulgariser, cette ligne permet en quelque sorte de recommencer là liste   
-#    print(encrypted_text)
-
-#def decrypt(original_text, shift_amount):
-#    shift_amount = int(shift_amount)
-#    decrypted_text = ""
-#    for letter in original_text:
-#        index = alphabet.index(letter)
-#        shifted = index - shift_amount
-#        decrypted_text += alphabet[shifted % len(alphabet)]
-#    print(decrypted_text)    
-
-
-def caesar(direction, original_text, shift_amount):
-    treated_text = ""
-    if direction == "decode":
-        shift_amount *= -1
-    
-    for letter in original_text:
-        if letter in alphabet:
-            letter_index = alphabet.index(letter)
-            shifted = letter_index + shift_amount
-            treated_text += alphabet[shifted % len(alphabet)] # Pour vulgariser, cette ligne permet en quelque sorte de recommencer la liste
+# Fonction pour chiffrer ou déchiffrer
+def caesar(choix, message_original, clé_chiffrement_déchiffrement):
+    message_modifié = ""
+    if choix == "déchiffrer":
+        clé_chiffrement_déchiffrement *= -1    
+    for lettre in message_original:
+        if lettre in alphabet:
+            position_lettre = alphabet.index(lettre)
+            nouvelle_position_lettre = position_lettre + clé_chiffrement_déchiffrement
+            message_modifié += alphabet[nouvelle_position_lettre % len(alphabet)]
+            # Cette ligne s'assure que la boucle ne sort jamais de la limite en utilisant le modulo
         else:
-            treated_text += letter
-
-    print(f"Le message {direction}é est : {treated_text}.")
+            message_modifié += lettre
+    print(f"Votre message modifié est : {message_modifié}.")
         
     
 print(caesar_art.logo)
 
-# Boucle pour continuer le programme
-program_loop = True
+# Boucle le programme aussi longtemps que le souhaite l'utilisateur
+programme_actif = True
 
-while program_loop == True:
-    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
-    text = input("Type your message:\n").lower()
-    shift = int(input("Type the shift number:\n"))
-    caesar(direction, text, shift)
-    keep_programm_running = str(input("Type 'yes' if you want to go again. Otherwise, type 'no' : ")).lower()
-    if keep_programm_running == "no":
-        program_loop = False
+while programme_actif == True:
+    option = input("Tapez 'chiffrer' pour chiffrer un message, tapez 'déchiffrer' pour déchiffrer un message:\n").lower()
+    while option != "chiffrer" and option != "déchiffrer":
+        print("Veuillez choisir l'une des deux options suivantes s'il vous plait :")
+        option = input("Tapez 'chiffrer' pour chiffrer un message, tapez 'déchiffrer' pour déchiffrer un message:\n").lower()
+
+    # Demande à l'utilisateur de saisir ces informations
+    message = input("Tapez votre message:\n").lower()
+    clé_numérique = int(input("Tapez un nombre pour définir le numéro de cryptage:\n"))
+    caesar(option, message, clé_numérique)
+    continuer_programme = str(input("Tapez 'oui' si vous souhaitez utiliser le programme à nouveau. Sinon, tapez 'non': ")).lower()
+
+    # Demande à l'utilisateur s'il souhaite continuer à utiliser le programme    
+    while continuer_programme != "oui" and continuer_programme != "non":
+        print("Veuillez choisir l'une des deux options suivantes s'il vous plait :")
+        continuer_programme = str(input("Tapez 'oui' si vous souhaitez utiliser le programme à nouveau. Sinon, tapez 'non': ")).lower()
+    if continuer_programme == "non":
+        programme_actif = False
